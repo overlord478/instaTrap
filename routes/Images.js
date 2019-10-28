@@ -27,7 +27,7 @@ const upload = multer({storage})
 
 // route to get all images
 router.get('/',auth,async(req,res)=>{
-    console.log("entering the get route")
+    
 
 try {
     
@@ -40,12 +40,27 @@ try {
 
 });
 
+// get one latest uploaded image 
+
+
+router.get('/one',auth,async(req,res)=>{
+
+    try {
+        const image = await Image.findOne({user:req.user.id}).sort({_id:-1})
+        res.json(image)
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal server error")
+    }
+
+});
+
 // route to post image for resp.user
 
 router.post('/',[auth,upload.single('image')],async(req,res)=>{
     
     
-   console.log('inside upload image route ',req.file,req.body)
+   
 
     const newImage = new Image({
         user:req.user.id,
