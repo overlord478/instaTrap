@@ -2,9 +2,6 @@ const express = require('express')
 const app = express();
 const path = require('path');
 const connectDB = require('./database/db');
-const insert = require('./routes/data')
-const image = require('./routes/image')
-const getimage = require('./routes/getimage');
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
