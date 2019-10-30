@@ -84,8 +84,10 @@ router.post('/',[auth,upload.single('image')],async(req,res)=>{
 // route to delete image
 
 router.delete('/:id',auth,async(req,res)=>{
-
-    const response = Image.deleteOne({id})
+    
+        
+    const response = await Image.deleteOne({_id:req.params.id})
+    res.json({msg:"Image deleted successfully"})
 });
 
 
