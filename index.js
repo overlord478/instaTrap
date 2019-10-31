@@ -16,6 +16,7 @@ app.use(cors());
 app.use('/register',require('./routes/Register'));
 app.use('/login',require('./routes/Login'));
 app.use('/image',require('./routes/Images'));
+app.use('/user',require('./routes/User'));
 
 
 
